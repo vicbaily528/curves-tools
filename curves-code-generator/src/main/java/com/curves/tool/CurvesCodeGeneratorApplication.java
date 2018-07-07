@@ -27,6 +27,13 @@ public class CurvesCodeGeneratorApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        this.generatorCode();
+    }
+
+    /**
+     * 代码生成开始
+     */
+    public void generatorCode() {
 
     }
 

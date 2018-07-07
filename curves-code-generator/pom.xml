@@ -33,6 +33,23 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <!-- database -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.25</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+        </dependency>
 
         <!--lombom-->
         <dependency>
@@ -40,6 +57,11 @@
             <artifactId>lombok</artifactId>
             <version>1.16.18</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
         </dependency>
     </dependencies>
 
@@ -57,18 +79,18 @@
     </dependencyManagement>
 
 
-    <distributionManagement>
-        <repository>
-            <id>nexus</id>
-            <name>Releases</name>
-            <url>http://localhost:8081/repository/nexus-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus</id>
-            <name>Snapshot</name>
-            <url>http://localhost:8081/repository/nexus-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>nexus</id>-->
+            <!--<name>Releases</name>-->
+            <!--<url>http://localhost:8081/repository/nexus-releases</url>-->
+        <!--</repository>-->
+        <!--<snapshotRepository>-->
+            <!--<id>nexus</id>-->
+            <!--<name>Snapshot</name>-->
+            <!--<url>http://localhost:8081/repository/nexus-snapshots</url>-->
+        <!--</snapshotRepository>-->
+    <!--</distributionManagement>-->
 
     <build>
         <plugins>

@@ -14,4 +14,6 @@ public class DataBaseServiceImpl implements IDataBaseService {
 
     @Autowired
     DataBaseDao dataBaseDao;
+
+
 }

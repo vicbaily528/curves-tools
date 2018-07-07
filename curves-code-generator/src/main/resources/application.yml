@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://10.41.215.200:3306/direwolf_report?characterEncoding=UTF-8&characterSetResults=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 1qaz@WSX
+    driver-class-name: com.mysql.jdbc.Driver
