@@ -1,0 +1,21 @@
+package ${project.packagePath}.services.pojo.vo;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+/**
+ * ${table.tableComment} 查询对象
+ * @author ${project.projectAuthor}
+ */
+@Data
+@ApiModel(value = "${table.className}Query", description = "${table.tableComment}对象")
+public class ${table.className}Query {
+
+    <#list table.columns as column>
+    @ApiModelProperty(value = "用户名称")
+    private ${column.attributeType} ${column.attributeName};
+
+    </#list>
+
+}

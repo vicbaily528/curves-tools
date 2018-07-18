@@ -1,0 +1,53 @@
+package ${project.packagePath}.services.service;
+
+import ${project.packagePath}.services.pojo.vo.${table.className}Query;
+import ${project.packagePath}.services.pojo.entity.${table.className}Entity;
+
+import java.util.List;
+
+/**
+ * ${table.tableComment} 接口
+ * @author ${project.projectAuthor}
+ */
+public interface I${table.className}Service {
+    /**
+     * 分页查询
+     * @return
+     */
+    List<${table.className}Entity> select${table.className}ByPage(${table.className}Query ${table.attributeName}Query);
+
+    /**
+     * 根据主键删除数据
+     * @param uuid 主键
+     * @return int 影响条数
+     */
+    int deleteByPrimaryKey(String uuid);
+
+    /**
+     * 根据组件批量删除对象
+     * @param uuids 主键
+     * @return int 影响条数
+     */
+    int deleteByPrimaryKeys(List<String> uuids);
+
+    /**
+     * 新增对象
+     * @param record 对象
+     * @return int 影响条数
+     */
+    int insert(${table.className}Entity record);
+
+    /**
+     * 通过主键查询对象
+     * @param uuid 主键
+     * @return ${table.className}Do 对象
+     */
+    ${table.className}Entity selectByPrimaryKey(String uuid);
+
+    /**
+     * 对象更新
+     * @param record 对象
+     * @return int 影响条数
+     */
+    int updateByPrimaryKey(${table.className}Entity record);
+}

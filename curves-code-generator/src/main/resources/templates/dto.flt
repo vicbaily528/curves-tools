@@ -1,0 +1,20 @@
+package ${project.packagePath}.services.pojo.dto;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+/**
+ * ${table.tableComment} DTO
+ * @author ${project.projectAuthor}
+ */
+@Data
+@ApiModel(value = "${table.className}DTO", description = "${table.tableComment}对象")
+public class ${table.className}DTO {
+
+    <#list table.columns as column>
+    @ApiModelProperty(value = "${column.columnsComment}")
+    private ${column.attributeType} ${column.attributeName};
+
+    </#list>
+}

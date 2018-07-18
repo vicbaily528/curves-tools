@@ -1,0 +1,18 @@
+package ${project.packagePath}.services.pojo.entity;
+
+import lombok.Data;
+
+/**
+ * ${table.tableComment} 实体类
+ * @author ${project.projectAuthor}
+ */
+@Data
+public class ${table.className}Entity {
+
+    <#list table.columns as column>
+    /**
+     * ${column.columnsComment}
+     */
+    private ${column.attributeType} ${column.attributeName};
+    </#list>
+}

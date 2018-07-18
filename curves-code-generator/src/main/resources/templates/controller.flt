@@ -1,0 +1,131 @@
+package ${project.packagePath}.services.controller;
+
+import ${project.packagePath}.services.pojo.vo.${table.className}Query;
+import ${project.packagePath}.services.pojo.dto.${table.className}DTO;
+import ${project.packagePath}.services.pojo.entity.${table.className}Entity;
+import ${project.packagePath}.services.service.I${table.className}Service;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * ${table.tableComment} Controller
+ * @author ${project.projectAuthor}
+ */
+@RestController
+@RequestMapping("/${table.attributeName}")
+@Api(value = "${table.className}Controller", description = "${table.tableComment}接口描述")
+public class ${table.className}Controller {
+
+    @Autowired
+    I${table.className}Service i${table.className}Service;
+
+    @Autowired
+    ModelMapper modelMapper;
+
+    /**
+     * 分页查询
+     *
+     * @param pageNum  当前页数
+     * @param pageSize 每页条数
+     * @return PageInfo<${table.className}Do> 分页结果
+     */
+    @GetMapping("/select${table.className}ByPage/{pageNum}/{pageSize}")
+    @ApiOperation(value = "分页查询", httpMethod = "GET", notes = "分页查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", dataType = "Long", name = "pageNum", value = "页数", required = true),
+            @ApiImplicitParam(paramType = "path", dataType = "Long", name = "pageSize", value = "每页数据条数", required = true),
+            @ApiImplicitParam(paramType = "path", dataType = "${table.className}Query", name = "${table.attributeName}Query", value = "数据对象", required = true)
+    })
+    public PageInfo<${table.className}Entity> select${table.className}ByPage(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize, @RequestBody ${table.className}Query ${table.attributeName}Query) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<${table.className}Entity> ${table.attributeName}DoList = i${table.className}Service.select${table.className}ByPage(${table.attributeName}Query);
+        PageInfo<${table.className}Entity> pageInfo = new PageInfo<>(${table.attributeName}DoList);
+        return pageInfo;
+    }
+
+    /**
+     * 保存用户信息
+     *
+     * @param record 对象
+     * @return int 数据处理条数
+     */
+    @PostMapping("/user")
+    @ApiOperation(value = "保存用户信息", httpMethod = "POST", notes = "保存用户信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "body", dataType = "${table.className}DTO", name = "record", value = "用户对象", required = true)
+    })
+    public int save(@RequestBody ${table.className}DTO record) {
+        ${table.className}Entity ${table.attributeName}Do = modelMapper.map(record, ${table.className}Entity.class);
+        return i${table.className}Service.insert(${table.attributeName}Do);
+    }
+
+    /**
+     * 通过主键查询对象
+     *
+     * @param uuid 主键
+     * @return ${table.className}Do 对象
+     */
+    @GetMapping("/selectByPrimaryKey/{uuid}")
+    @ApiOperation(value = "通过主键查询对象", httpMethod = "GET", notes = "通过主键查询对象")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", dataType = "String", name = "uuid", value = "用户ID", required = true)
+    })
+    public ${table.className}Entity selectByPrimaryKey(@PathVariable("uuid") String uuid) {
+        return i${table.className}Service.selectByPrimaryKey(uuid);
+    }
+
+    /**
+     * 更新对象
+     *
+     * @param record 对象
+     * @return int 影响条数
+     */
+    @PutMapping("/${table.attributeName}")
+    @ApiOperation(value = "更新对象", httpMethod = "PUT", notes = "通过主键查询对象")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "body", dataType = "${table.className}Entity", name = "record", value = "用户对象", required = true)
+    })
+    public int updateByPrimaryKey(@RequestBody ${table.className}Entity record) {
+        return i${table.className}Service.updateByPrimaryKey(record);
+    }
+
+    /**
+     * 通过主键删除对象
+     *
+     * @param uuid 主键
+     * @return int 影响条数
+     */
+    @DeleteMapping("/${table.attributeName}/{uuid}")
+    @ApiOperation(value = "通过主键删除对象", httpMethod = "DELETE", notes = "通过主键查询对象")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", dataType = "String", name = "uuid", value = "用户ID", required = true)
+    })
+    public int deleteByPrimaryKey(@PathVariable("uuid") String uuid) {
+        return i${table.className}Service.deleteByPrimaryKey(uuid);
+    }
+
+    /**
+     * 通过主键批量删除对象
+     *
+     * @param uuids 主键
+     * @return int 影响条数
+     */
+    @DeleteMapping("/${table.attributeName}")
+    @ApiOperation(value = "通过主键批量删除对象", httpMethod = "DELETE", notes = "通过主键查询对象")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "body", dataType = "List", name = "uuids", value = "用户ID", required = true)
+    })
+    public int deleteByPrimaryKeys(@RequestBody List<String> uuids) {
+        return i${table.className}Service.deleteByPrimaryKeys(uuids);
+    }
+
+}

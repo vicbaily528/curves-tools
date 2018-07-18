@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${project.packagePath}.services.mapper.${table.className}Mapper">
+
+    <!-- DO映射表 -->
+    <resultMap id="BaseResultMap" type="${project.packagePath}.services.pojo.entity.${table.className}Entity">
+    <#list table.columns as column>
+        <#if column.columnKey != 'PRI'>
+        <result column="${column.columnsName}" jdbcType="${column.columnsType}" property="${column.columnsType}" />
+        <#else>
+        <id column="${column.columnsName}" jdbcType="${column.columnsType}" property="${column.columnsType}" />
+        </#if>
+    </#list>
+    </resultMap>
+
+    <!-- 表字段 -->
+    <sql id="Base_Column_List">
+        ${columns}
+    </sql>
+
+    <!-- 分页查询 -->
+    <select id="selectUsersByPage" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/> from ${table.tableName}
+    </select>
+
+    <!-- 通过主键获取对象 -->
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ${table.tableName}
+        where uuid = #{uuid}
+    </select>
+
+    <!-- 通过主键删除 -->
+    <delete id="deleteByPrimaryKey">
+        delete from ${table.tableName}
+        where uuid = #{uuid}
+    </delete>
+
+    <!-- 批量删除 -->
+    <delete id="deleteByPrimaryKeys">
+        delete from ${table.tableName}
+        <where>
+            uuid in
+            <foreach collection="array" item="arr" index="no" open="(" separator="," close=")">
+                #{arr}
+            </foreach>
+        </where>
+    </delete>
+
+  <!-- 新增对象信息 -->
+  <insert id="insert" parameterType="${project.packagePath}.services.pojo.entity.${table.className}Entity">
+    insert into ${table.tableName}
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="userpass != null">
+        userpass,
+      </if>
+      <if test="userage != null">
+        userage,
+      </if>
+      <if test="deptUuid != null">
+        dept_uuid,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="bisdelete != null">
+        bisdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        UUID(),
+      </if>
+      <if test="username != null">
+        #{username},
+      </if>
+      <if test="userpass != null">
+        #{userpass},
+      </if>
+      <if test="userage != null">
+        #{userage},
+      </if>
+      <if test="deptUuid != null">
+        #{deptUuid},
+      </if>
+      <if test="phone != null">
+        #{phone},
+      </if>
+      <if test="email != null">
+        #{email},
+      </if>
+      <if test="bisdelete != null">
+        #{bisdelete},
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <!-- 更新对象信息 -->
+  <update id="updateByPrimaryKey" parameterType="${project.packagePath}.services.pojo.entity.${table.className}Entity">
+    update ${table.tableName}
+    <set>
+      <if test="username != null">
+        username = #{username},
+      </if>
+      <if test="userpass != null">
+        userpass = #{userpass},
+      </if>
+      <if test="userage != null">
+        userage = #{userage},
+      </if>
+      <if test="deptUuid != null">
+        dept_uuid = #{deptUuid},
+      </if>
+      <if test="phone != null">
+        phone = #{phone},
+      </if>
+      <if test="email != null">
+        email = #{email},
+      </if>
+      <if test="bisdelete != null">
+        bisdelete = #{bisdelete},
+      </if>
+    </set>
+    where uuid = #{uuid}
+  </update>
+
+
+</mapper>
