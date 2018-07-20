@@ -1,6 +1,6 @@
 package ${project.packagePath}.services.service;
 
-import ${project.packagePath}.services.pojo.vo.${table.className}Query;
+import ${project.packagePath}.services.pojo.query.${table.className}Query;
 import ${project.packagePath}.services.pojo.entity.${table.className}Entity;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public interface I${table.className}Service {
      * @param uuid 主键
      * @return int 影响条数
      */
-    int deleteByPrimaryKey(String uuid);
+    int delete(String uuid);
 
     /**
      * 根据组件批量删除对象
@@ -49,5 +49,5 @@ public interface I${table.className}Service {
      * @param record 对象
      * @return int 影响条数
      */
-    int updateByPrimaryKey(${table.className}Entity record);
+    int update(${table.className}Entity record);
 }

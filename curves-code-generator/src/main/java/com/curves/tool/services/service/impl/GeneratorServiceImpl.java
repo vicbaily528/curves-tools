@@ -28,13 +28,13 @@ public class GeneratorServiceImpl implements IGeneratorService {
     public void generatorCodeFile(TableDO tableDO, ProjectDTO projectDTO, DuridDTO duridDTO) {
         GeneratorManager generatorManager = new GeneratorManager();
 
-//        new ControllerManager(generatorManager);
-//        new IServiceManager(generatorManager);
-//        new ServiceManager(generatorManager);
-//        new EntityManager(generatorManager);
-//        new DtoManager(generatorManager);
-//        new QueryManager(generatorManager);
-//        new MapperManager(generatorManager);
+        new ControllerManager(generatorManager);
+        new IServiceManager(generatorManager);
+        new ServiceManager(generatorManager);
+        new EntityManager(generatorManager);
+        new DtoManager(generatorManager);
+        new QueryManager(generatorManager);
+        new MapperManager(generatorManager);
         new XmlManager(generatorManager);
 
 

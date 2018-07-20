@@ -1,4 +1,4 @@
-package ${project.packagePath}.services.pojo.vo;
+package ${project.packagePath}.services.pojo.query;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -13,7 +13,7 @@ import lombok.Data;
 public class ${table.className}Query {
 
     <#list table.columns as column>
-    @ApiModelProperty(value = "用户名称")
+    @ApiModelProperty(value = "${column.columnsComment?trim}")
     private ${column.attributeType} ${column.attributeName};
 
     </#list>

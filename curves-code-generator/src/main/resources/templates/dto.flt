@@ -9,11 +9,11 @@ import lombok.Data;
  * @author ${project.projectAuthor}
  */
 @Data
-@ApiModel(value = "${table.className}DTO", description = "${table.tableComment}对象")
+@ApiModel(value = "${table.className}DTO", description = "${table.tableComment?trim}对象")
 public class ${table.className}DTO {
 
     <#list table.columns as column>
-    @ApiModelProperty(value = "${column.columnsComment}")
+    @ApiModelProperty(value = "${column.columnsComment?trim}")
     private ${column.attributeType} ${column.attributeName};
 
     </#list>

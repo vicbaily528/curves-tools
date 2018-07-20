@@ -1,6 +1,6 @@
 package ${project.packagePath}.services.controller;
 
-import ${project.packagePath}.services.pojo.vo.${table.className}Query;
+import ${project.packagePath}.services.pojo.query.${table.className}Query;
 import ${project.packagePath}.services.pojo.dto.${table.className}DTO;
 import ${project.packagePath}.services.pojo.entity.${table.className}Entity;
 import ${project.packagePath}.services.service.I${table.className}Service;
@@ -63,7 +63,7 @@ public class ${table.className}Controller {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "body", dataType = "${table.className}DTO", name = "record", value = "用户对象", required = true)
     })
-    public int save(@RequestBody ${table.className}DTO record) {
+    public int insert(@RequestBody ${table.className}DTO record) {
         ${table.className}Entity ${table.attributeName}Do = modelMapper.map(record, ${table.className}Entity.class);
         return i${table.className}Service.insert(${table.attributeName}Do);
     }
@@ -94,8 +94,8 @@ public class ${table.className}Controller {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "body", dataType = "${table.className}Entity", name = "record", value = "用户对象", required = true)
     })
-    public int updateByPrimaryKey(@RequestBody ${table.className}Entity record) {
-        return i${table.className}Service.updateByPrimaryKey(record);
+    public int update(@RequestBody ${table.className}Entity record) {
+        return i${table.className}Service.update(record);
     }
 
     /**
@@ -109,8 +109,8 @@ public class ${table.className}Controller {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", dataType = "String", name = "uuid", value = "用户ID", required = true)
     })
-    public int deleteByPrimaryKey(@PathVariable("uuid") String uuid) {
-        return i${table.className}Service.deleteByPrimaryKey(uuid);
+    public int delete(@PathVariable("uuid") String uuid) {
+        return i${table.className}Service.delete(uuid);
     }
 
     /**

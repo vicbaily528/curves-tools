@@ -1,6 +1,6 @@
 package ${project.packagePath}.services.mapper;
 
-import ${project.packagePath}.services.pojo.vo.${table.className}Query;
+import ${project.packagePath}.services.pojo.query.${table.className}Query;
 import ${project.packagePath}.services.pojo.entity.${table.className}Entity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -28,7 +28,7 @@ public interface ${table.className}Mapper {
      * @param uuid 主键
      * @return int 影响条数
      */
-    int deleteByPrimaryKey(@Param("uuid") String uuid);
+    int delete(@Param("uuid") String uuid);
 
     /**
      * 根据组件批量删除对象
@@ -56,5 +56,5 @@ public interface ${table.className}Mapper {
      * @param record 对象
      * @return int 影响条数
      */
-    int updateByPrimaryKey(${table.className}Entity record);
+    int update(${table.className}Entity record);
 }

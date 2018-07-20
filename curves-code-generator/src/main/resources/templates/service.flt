@@ -1,6 +1,6 @@
 package ${project.packagePath}.services.service.impl;
 
-import ${project.packagePath}.services.pojo.vo.${table.className}Query;
+import ${project.packagePath}.services.pojo.query.${table.className}Query;
 import ${project.packagePath}.services.mapper.${table.className}Mapper;
 import ${project.packagePath}.services.pojo.entity.${table.className}Entity;
 import ${project.packagePath}.services.service.I${table.className}Service;
@@ -37,8 +37,8 @@ public class ${table.className}ServiceImpl implements I${table.className}Service
      * @return int 影响条数
      */
     @Override
-    public int deleteByPrimaryKey(String uuid) {
-        return ${table.attributeName}Mapper.deleteByPrimaryKey(uuid);
+    public int delete(String uuid) {
+        return ${table.attributeName}Mapper.delete(uuid);
     }
 
     /**
@@ -77,7 +77,7 @@ public class ${table.className}ServiceImpl implements I${table.className}Service
      * @return int 影响条数
      */
     @Override
-    public int updateByPrimaryKey(${table.className}Entity record) {
-        return ${table.attributeName}Mapper.updateByPrimaryKey(record);
+    public int update(${table.className}Entity record) {
+        return ${table.attributeName}Mapper.update(record);
     }
 }

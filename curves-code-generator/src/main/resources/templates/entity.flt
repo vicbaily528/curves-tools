@@ -11,7 +11,7 @@ public class ${table.className}Entity {
 
     <#list table.columns as column>
     /**
-     * ${column.columnsComment}
+     * ${column.columnsComment?trim}
      */
     private ${column.attributeType} ${column.attributeName};
     </#list>
