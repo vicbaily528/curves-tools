@@ -26,7 +26,6 @@ public class DataBaseDaoTest {
     @Test
     public void getTableNameByDataBase() {
         String filePath = new File("/Users/li.xiangdong/dev-works/javaWorks/github.com/curves-tools/curves-demo/src/main/java/com/curves/service/demo/CurvesDemoApplication.java").getAbsolutePath();
-        System.out.println(filePath.substring(0, filePath.lastIndexOf("/")));
     }
 
     @Test
@@ -34,11 +33,6 @@ public class DataBaseDaoTest {
         String databaseName = "curves_user";
         String tableName = "account_user";
         List<ColumnDO> columnDOs = dataBaseService.selectTableColumns(databaseName, tableName);
-        columnDOs.forEach(column -> {
-                    System.out.println(column);
-                }
-
-        );
     }
 
     @Test

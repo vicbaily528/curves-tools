@@ -101,7 +101,6 @@ public class CFileHelper {
         builder.append(path);
         builder.append(fileName);
         builder.append(tix);
-        System.out.println(builder.toString());
         return new File(builder.toString());
     }
 

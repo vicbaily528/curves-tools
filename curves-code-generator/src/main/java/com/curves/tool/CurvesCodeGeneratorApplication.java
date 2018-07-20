@@ -103,7 +103,7 @@ public class CurvesCodeGeneratorApplication implements CommandLineRunner {
         tableNameList.forEach(tableDO -> {
             iGeneratorService.generatorCodeFile(tableDO, projectDTO, duridDTO);
         });
-//        iGeneratorService.generatorConfigFile(dataBaseDTO, projectDTO, duridDTO);
+        iGeneratorService.generatorConfigFile(dataBaseDTO, projectDTO, duridDTO);
     }
 
     private DataBaseDTO initDataBase() {
